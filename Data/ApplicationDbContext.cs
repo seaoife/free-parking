@@ -15,6 +15,8 @@ namespace FreePark.Data
         }
 
         public DbSet<ParkingSpace> ParkingSpaces { get; set; }
+
+        public DbSet<FreePark.Models.UserPhone> UserPhone { get; set; }
          
     }
 }
