@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace easyPark.Models
+namespace FreePark.Models
 {
     public class ParkingSpace
     {
-        public string Id { get; set; }
+        public int Id { get; set; }
         public string StreetName { get; set; }
         public int TotalSpace { get; set; }
         public string Venue { get; set; }

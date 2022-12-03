@@ -4,59 +4,22 @@ using FreePark.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace FreePark.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20221203200516_CreateParkingSpace")]
+    partial class CreateParkingSpace
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("ProductVersion", "3.1.31")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-            modelBuilder.Entity("FreePark.Models.ParkingSpace", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int>("EndTime")
-                        .HasColumnType("int");
-
-                    b.Property<bool>("IsGarageParking")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("Notes")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("StartTime")
-                        .HasColumnType("int");
-
-                    b.Property<string>("StreetName")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("TotalSpace")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Venue")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<float>("lat")
-                        .HasColumnType("real");
-
-                    b.Property<float>("lng")
-                        .HasColumnType("real");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("ParkingSpaces");
-                });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
                 {

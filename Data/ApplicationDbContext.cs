@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+﻿using FreePark.Models;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -12,5 +13,8 @@ namespace FreePark.Data
             : base(options)
         {
         }
+
+        public DbSet<ParkingSpace> ParkingSpaces { get; set; }
+         
     }
 }
