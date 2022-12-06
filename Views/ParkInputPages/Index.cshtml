@@ -1,0 +1,65 @@
+﻿@model IEnumerable<FreePark.Models.ParkInputPage>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.UserId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LocationSelect)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ParkNearVenueSelect)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FreeParkingCheckBox)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.GarageParkingCheckbox)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ParkingMeterLocations)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.UserId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LocationSelect)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ParkNearVenueSelect)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FreeParkingCheckBox)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.GarageParkingCheckbox)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ParkingMeterLocations)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
