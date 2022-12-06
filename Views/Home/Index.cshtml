@@ -1,4 +1,5 @@
-﻿@{
+﻿@using Microsoft.AspNetCore.Identity;
+@{
     ViewData["Title"] = "Home Page";
 
 }
@@ -22,31 +23,32 @@
         </style>*@
 
 </head>
-
-<div class="text-center">
-    <h3 class="display-4">FindYSpace</h3>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
 <body>
-    <div buttonBody>
-        <div class="grid-container">
-
-            <p>
-                Pick your
-            </p>
-
-            <p>
-                <button>Free Parking<br />Periods</button>&nbsp;&nbsp;<button>Garage Parking</button>
-            </p>
-            <p>
-                <button>Paid Parking<br />Periods</button>&nbsp;&nbsp;<button>Private Spaces</button>
-            </p>
-
-
+    <div>
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <a class="btn btn-primary btn-md" role="button" aria-disabled="true" asp-area="Identity" asp-page="/Account/Login">
+                        Login
+                    </a>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <a class="btn btn-primary btn-md" role="button" aria-disabled="true" asp-area="Identity" asp-page="/Account/Register">
+                        Register
+                    </a>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <a class="btn btn-primary btn-md" role="button" aria-disabled="true" asp-controller="CarRegEntries" asp-action="Create">
+                        Use without account
+                    </a>
+                </div>
+            </div>
         </div>
     </div>
-
-
 
 </body>
 
