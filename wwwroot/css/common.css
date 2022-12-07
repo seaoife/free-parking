@@ -1,0 +1,15 @@
+﻿
+.pageTitle {
+    background: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+}
+
+.col-center {
+    width: 100%;
+    text-align: center;
+}
+
+

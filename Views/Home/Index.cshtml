@@ -6,42 +6,47 @@
 <head>
     <link href="@Url.Content("~/css/Index.css")" rel="stylesheet" type="text/css" />
     <link href="@Url.Content("~/css/site.css")" rel="stylesheet" type="text/css" />
-    @*<style>
-            .navbar-brand {
-                color: white !important;
-            }
 
-            .navbar {
-                background: rgb(65,179,163);
-                background: linear-gradient(90deg, rgba(65,179,163,1) 23%, rgba(189,231,210,1) 100%);
-                /*   background-color: #41B3A3 !important;*/
-            }
+    <style>
+     .pageTitle{
+           
+            background: none;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            text-align: center;
+        }
+     .col-center{
+            width: 100%;
+            text-align: center;
+        }
+        
 
-            .nav-link {
-                color: #fff !important;
-            }
-        </style>*@
-
+    </style>
 </head>
+<h4 class="pageTitle">Choose Login Option</h4>
+<br/>
 <body>
     <div>
         <div class="container">
             <div class="row">
-                <div class="col">
+                <div class="col-center">
                     <a class="btn btn-primary btn-md" role="button" aria-disabled="true" asp-area="Identity" asp-page="/Account/Login">
                         Login
                     </a>
                 </div>
             </div>
+            <br /><br />
             <div class="row">
-                <div class="col">
+                <div class="col-center">
                     <a class="btn btn-primary btn-md" role="button" aria-disabled="true" asp-area="Identity" asp-page="/Account/Register">
                         Register
                     </a>
                 </div>
             </div>
+            <br /><br />
             <div class="row">
-                <div class="col">
+                <div class="col-center">
                     <a class="btn btn-primary btn-md" role="button" aria-disabled="true" asp-controller="CarRegEntries" asp-action="Create">
                         Use without account
                     </a>

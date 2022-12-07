@@ -22,6 +22,8 @@ namespace FreePark.Models
 
         public DateTime EndTime { get; set; }
 
+        public string StreetName { get; set; }
+
 
     }
 }
