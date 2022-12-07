@@ -18,6 +18,10 @@ namespace FreePark.Models
 
         public Boolean ParkingMeterLocations { get; set; }
 
+        public DateTime StartTime { get; set; }
+
+        public DateTime EndTime { get; set; }
+
 
     }
 }
