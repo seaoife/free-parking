@@ -3,12 +3,39 @@
 @{
     ViewData["Title"] = "Create";
 }
+<head>
+    <style>
+        a {
+            text-decoration: none;
+            display: inline-block;
+            padding: 8px 16px;
+        }
 
+            a:hover {
+                background-color: #ddd;
+                color: black;
+            }
+
+        .previous {
+            background-color: #f1f1f1;
+            color: black;
+        }
+
+        .next {
+            background-color: #04AA6D;
+            color: white;
+        }
+
+        .round {
+            border-radius: 50%;
+        }
+    </style>
+</head>
 <h4>CarRegEntry</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="Create">
+        <form asp-action="Next">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="CarReg" class="control-label"></label>
@@ -16,20 +43,27 @@
                 <span asp-validation-for="CarReg" class="text-danger"></span>
             </div>
             @*<div class="form-group">
-                <label asp-for="UserId" class="control-label"></label>
-                <input asp-for="UserId" class="form-control" />
-                <span asp-validation-for="UserId" class="text-danger"></span>
-            </div>*@
-            <div class="form-group">
-                <input type="submit" value="Next" class="btn btn-primary" />
-            </div>
+            <label asp-for="UserId" class="control-label"></label>
+            <input asp-for="UserId" class="form-control" />
+            <span asp-validation-for="UserId" class="text-danger"></span>
+        </div>*@
+            @*<div class="form-group">
+            <input type="submit" value="Next" action="CarDetails/Create.cshtml" class="btn btn-primary" />
+        </div>*@
+        <div>
+            <a class="btn btn-primary btn-md" role="button" aria-disabled="true" asp-controller="CarDetails" asp-action="Create">
+                Next
+            </a>
+        </div>
         </form>
     </div>
 </div>
-
+    <div>
+         <a href="#" onClick="history.go(-1) " class="previous round">&#8249;</a>
+    </div>
 @*<div>
-    <a asp-action="Index">Back to List</a>
-</div>*@
+        <a asp-action="Index">Back to List</a>
+    </div>*@
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
