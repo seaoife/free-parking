@@ -41,8 +41,11 @@ namespace FreePark.Controllers
             // will trigger this function when button in views/ParkingSpaces/Search is pressed
             // querying from parking spaces with given parameters: dayOfweek, GarageParkingCheckbox
             var result = _context.ParkingSpaces
-                .Where(p => p.StartTime >= (int)parkInputPage.StartTime.DayOfWeek)
+                .Where(p => p.StartTime >= (int)parkInputPage.StartTime.Hour)
+                .Where(p => p.StartDay >= (int)parkInputPage.StartTime.DayOfWeek)
+                .Where(p => p.IsFreeParking == parkInputPage.FreeParkingCheckBox)
                 .Where(p => p.IsGarageParking == parkInputPage.GarageParkingCheckbox)
+                .Where(p => p.HasParkingMeterLocations == parkInputPage.ParkingMeterLocations)
                 .ToList();
 
             return View("Index", result);//then returns the Index view

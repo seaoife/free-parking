@@ -37,6 +37,12 @@
                 @Html.DisplayNameFor(model => model.EndTime)
             </th>
             <th>
+                @Html.DisplayNameFor(model => model.StartDay)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EndDay)
+            </th>
+            <th>
                 @Html.DisplayNameFor(model => model.Notes)
             </th>
             <th></th>
@@ -68,6 +74,12 @@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.EndTime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StartDay)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EndDay)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Notes)
