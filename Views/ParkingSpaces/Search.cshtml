@@ -1,0 +1,136 @@
+﻿@model FreePark.Models.ParkInputPage
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+
+<head>
+    <style>
+        .centerBlock {
+           position: absolute;
+            right: 43.5%;
+        }
+        .pageTitle {
+            background: none;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            text-align: center;
+        }
+        .col-center {
+            width: 100%;
+            text-align: center;
+        }
+        .pos-bottom {
+            position: absolute;
+            top: 80%;
+            right: 49%;
+         }
+
+        a {
+            text-decoration: none;
+            display: inline-block;
+            padding: 8px 16px;
+        }
+
+        
+            a:hover {
+                background-color: #ddd;
+                color: black;
+            }
+
+        .previous {
+            background-color: #f1f1f1;
+            color: black;
+        }
+
+        .next {
+            background-color: #04AA6D;
+            color: white;
+        }
+
+        .round {
+            border-radius: 50%;
+        }
+    </style>
+</head>
+<h4 class="pageTitle">Enter Search Details</h4>
+<hr />
+<div class="centerBlock">
+    <div >
+        <form asp-action="Search">
+            @*<div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="form-group">
+            <label asp-for="UserId" class="control-label"></label>
+            <input asp-for="UserId" class="form-control" />
+            <span asp-validation-for="UserId" class="text-danger"></span>
+        </div>*@
+            <div class="form-group">
+                <label asp-for="LocationSelect" class="control-label"></label>
+                <select id="cities" name="LocationSelect">
+                    <option value="Dublin">Dublin</option>
+                    <option value="Cork">Cork</option>
+                    <option value="Galway">Galway</option>
+                </select>
+                @*<input asp-for="LocationSelect" class="form-control" />*@
+                @*<span asp-validation-for="LocationSelect" class="text-danger"></span>*@
+            </div>
+            <label for="html">Enter Street Name</label><br>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="StreetName" /> @Html.DisplayNameFor(model => model.StreetName)
+                </label>
+            </div>
+            @*<div class="form-group">
+            <label asp-for="ParkNearVenueSelect" class="control-label"></label>
+            <input asp-for="ParkNearVenueSelect" class="form-control" />
+            <span asp-validation-for="ParkNearVenueSelect" class="text-danger"></span>
+        </div>*@
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="FreeParkingCheckBox" /> @Html.DisplayNameFor(model => model.FreeParkingCheckBox)
+                </label>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="GarageParkingCheckbox" /> @Html.DisplayNameFor(model => model.GarageParkingCheckbox)
+                </label>
+            </div>
+
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="ParkingMeterLocations" /> @Html.DisplayNameFor(model => model.ParkingMeterLocations)
+                </label>
+            </div>
+            <label for="html">Enter Start Time</label><br>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="StartTime" /> @Html.DisplayNameFor(model => model.StartTime)
+                </label>
+            </div>
+            <label for="html">Enter End Time</label><br>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="EndTime" /> @Html.DisplayNameFor(model => model.EndTime)
+                </label>
+            </div>
+            <br />
+            <div class="col-center">
+                <input type="submit" value="Go to Map" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<br />
+
+<div class="pos-bottom">
+  
+    <a href="#" onClick="history.go(-1) "class="previous round">&#8249;</a>
+    
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

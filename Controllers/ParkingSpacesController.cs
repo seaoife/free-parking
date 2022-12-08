@@ -25,6 +25,29 @@ namespace FreePark.Controllers
             return View(await _context.ParkingSpaces.ToListAsync());
         }
 
+        public IActionResult Search()
+        {
+            //var result = _context.ParkingSpaces.Where(p => p.StartTime >= 5).Where(p => p.IsGarageParking == false).ToList();
+
+            //return View("Index", result);
+            return View();
+        }
+
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Search([Bind("Id,UserId,LocationSelect,ParkNearVenueSelect,FreeParkingCheckBox,GarageParkingCheckbox,ParkingMeterLocations")] ParkInputPage parkInputPage)
+        {
+            // will trigger this function when button in views/ParkingSpaces/Search is pressed
+            // querying from parking spaces with given parameters: dayOfweek, GarageParkingCheckbox
+            var result = _context.ParkingSpaces
+                .Where(p => p.StartTime >= (int)parkInputPage.StartTime.DayOfWeek)
+                .Where(p => p.IsGarageParking == parkInputPage.GarageParkingCheckbox)
+                .ToList();
+
+            return View("Index", result);//then returns the Index view
+        }
+
         // GET: ParkingSpaces/Details/5
         public async Task<IActionResult> Details(int? id)
         {
