@@ -1,4 +1,5 @@
-﻿@model FreePark.Models.CarRegEntry
+﻿
+@model FreePark.Models.CarRegEntry
 
 @{
     ViewData["Title"] = "Create";
@@ -14,12 +15,22 @@
             justify-content: center;
             text-align: center;
         }
-
+        .pos-cent {
+            position: absolute;
+            right: 38%;
+        }
         .col-center {
             width: 100%;
             text-align: center;
         }
-       
+        form {
+            position: absolute;
+            right: 43.5%;
+        }
+        .cent-ahref {
+            position: absolute;
+            right: 49%;
+        }
         a {
             text-decoration: none;
             display: inline-block;
@@ -50,33 +61,26 @@
 <h4 class="pageTitle">Enter Car Registration</h4>
 <hr />
 <div class="row">
-    <div class="col-center">
+    <div>
         <form asp-action="Next">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="col-center">
                 @*<label asp-for="CarReg" class="control-label"></label>*@
-                <input asp-for="CarReg" class="form-control" maxlength="1"/>
+                <input asp-for="CarReg" class="form-control" maxlength="40"/>
                 <span asp-validation-for="CarReg" class="text-danger"></span>
             </div>
-            @*<div class="form-group">
-            <label asp-for="UserId" class="control-label"></label>
-            <input asp-for="UserId" class="form-control" />
-            <span asp-validation-for="UserId" class="text-danger"></span>
-        </div>*@
-            @*<div class="form-group">
-            <input type="submit" value="Next" action="CarDetails/Create.cshtml" class="btn btn-primary" />
-        </div>*@
+            
             <br/>
-        <div class="col-center">
+        <div class="pos-cent">
             <a class="btn btn-primary btn-md" role="button" aria-disabled="true" asp-controller="CarDetails" asp-action="Create">
                 Next
             </a>
         </div>
         </form>
-    </div>
+    </div> 
 </div>
-<br/>
-    <div class="col-center">
+<br/><br/><br/><br/><br />
+    <div class="cent-ahref">
          <a href="#" onClick="history.go(-1) " class="previous round">&#8249;</a>
     </div>
 @*<div>

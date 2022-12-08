@@ -22,7 +22,11 @@
             width: 100%;
             text-align: center;
         }
-
+        .pos-bottom {
+            position: absolute;
+            top: 80%;
+            right: 49%;
+         }
 
         a {
             text-decoration: none;
@@ -121,10 +125,10 @@
 
 <br />
 
-<div>
-    @*<a asp-action="Index">Back to previous page</a>*@
+<div class="pos-bottom">
+  
     <a href="#" onClick="history.go(-1) "class="previous round">&#8249;</a>
-    @*<input type="button" value="Go back!" onclick="history.back()">*@
+    
 </div>
 
 @section Scripts {
