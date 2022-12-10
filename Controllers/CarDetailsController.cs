@@ -57,9 +57,17 @@ namespace FreePark.Controllers
             Console.WriteLine(result);
 
 
-            //Root rootResponse = JsonConvert.DeserializeObject<Root>(result);//response.Content will print the while json of instructions.
-            ViewBag.result = result;
+            Root rootResponse = JsonConvert.DeserializeObject<Root>(result);//response.Content will print the while json of instructions.
+            Decode decodeResponse = rootResponse.decode[0];
+            List<Decode> decodeList = rootResponse.decode;
+            if(decodeList.Count >= 5)
+            {
+                List<Decode> decodeListSliced = decodeList.Take(5).ToList();
+                ViewBag.decodeList = decodeListSliced;
+                return View();
+            }
 
+            ViewBag.decodeList = decodeList;
             return View();
 
         }
