@@ -4,29 +4,49 @@
 
 }
 <head>
-    <link href="@Url.Content("~/css/Index.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/css/common.css")" rel="stylesheet" type="text/css" />
     <link href="@Url.Content("~/css/site.css")" rel="stylesheet" type="text/css" />
+    
 
     <style>
-     .pageTitle{
-           
+        .navbar-brand {
+            color: white !important;
+        }
+
+       /* .navbar {
+            background-color: white !important;
+        }*/
+
+        .nav-link {
+            color: black !important;
+        }
+
+            
+        
+        .pageTitle {
             background: none;
             display: flex;
             flex-direction: column;
             justify-content: center;
             text-align: center;
         }
-     .col-center{
+        
+        .col-center {
             width: 100%;
             text-align: center;
         }
-        
-
     </style>
 </head>
 <h4 class="pageTitle">Choose Login Option</h4>
 <br/>
 <body>
+    <!--First section-->
+    <div style="background-image: url('images/drawingCar.jpg'); 
+       background-size:cover; height: 250px; padding-top: 80px;">
+    </div>
+
+    @*<img src="car.jpg" alt="Car sitting on Coins" width="500" height="600">*@
+
     <div>
         <div class="container">
             <div class="row">

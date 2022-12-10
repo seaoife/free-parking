@@ -7,6 +7,12 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using FreePark.Data;
 using FreePark.Models;
+using RestSharp;
+using Newtonsoft.Json;
+using System.Net;
+using System.Security.Cryptography;
+using System.Text;
+using System.IO;
 
 namespace FreePark.Controllers
 {
@@ -22,132 +28,43 @@ namespace FreePark.Controllers
         // GET: CarDetails
         public async Task<IActionResult> Index()
         {
-            return View(await _context.CarDetails.ToListAsync());
-        }
+            // Sign up at https://vindecoder.eu/register and request API keys
+            // See API documentation at https://vindecoder.eu/my/api/3.1/docs
 
-        // GET: CarDetails/Details/5
-        public async Task<IActionResult> Details(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
+            WebClient proxy = new WebClient();
+            string api = "https://api.vindecoder.eu/3.2";
+            string apikey = "d8c45794c8f8";
+            string secretkey = "aaddd1480c";
+            string vin = "1GNEK13ZX3R298984";//"19XFA1F51BE026858";
+            string id = "decode";
 
-            var carDetails = await _context.CarDetails
-                .FirstOrDefaultAsync(m => m.Id == id);
-            if (carDetails == null)
-            {
-                return NotFound();
-            }
+            // Implementation of the abstract class SHA1.
+            SHA1 sha = new SHA1CryptoServiceProvider();
+            string hash;
 
-            return View(carDetails);
-        }
+            string textToSha = string.Concat(vin, "|", id, "|", apikey, "|", secretkey);
 
-        // GET: CarDetails/Create
-        public IActionResult Create()
-        {
+            SHA1Managed sha1 = new SHA1Managed();
+            String controlCheckComputed = BitConverter.ToString(sha1.ComputeHash(Encoding.UTF8.GetBytes(textToSha))).Replace("-", "").Substring(0, 10);
+
+            string serviceUrl = string.Format(api + "/" + apikey + "/" + controlCheckComputed + "/" + "decode" + "/" + vin + ".json");
+
+            byte[] _data = proxy.DownloadData(serviceUrl);
+            Stream _mem = new MemoryStream(_data);
+            var reader = new StreamReader(_mem);
+            var result = reader.ReadToEnd();
+
+            Console.WriteLine(result);
+
+
+            //Root rootResponse = JsonConvert.DeserializeObject<Root>(result);//response.Content will print the while json of instructions.
+            ViewBag.result = result;
+
             return View();
-        }
 
-        // POST: CarDetails/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id")] CarDetails carDetails)
-        {
-            if (ModelState.IsValid)
-            {
-                _context.Add(carDetails);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
-            }
-            return View(carDetails);
-        }
-
-        // GET: CarDetails/Edit/5
-        public async Task<IActionResult> Edit(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var carDetails = await _context.CarDetails.FindAsync(id);
-            if (carDetails == null)
-            {
-                return NotFound();
-            }
-            return View(carDetails);
-        }
-
-        // POST: CarDetails/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id")] CarDetails carDetails)
-        {
-            if (id != carDetails.Id)
-            {
-                return NotFound();
-            }
-
-            if (ModelState.IsValid)
-            {
-                try
-                {
-                    _context.Update(carDetails);
-                    await _context.SaveChangesAsync();
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!CarDetailsExists(carDetails.Id))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
-                return RedirectToAction(nameof(Index));
-            }
-            return View(carDetails);
-        }
-
-        // GET: CarDetails/Delete/5
-        public async Task<IActionResult> Delete(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var carDetails = await _context.CarDetails
-                .FirstOrDefaultAsync(m => m.Id == id);
-            if (carDetails == null)
-            {
-                return NotFound();
-            }
-
-            return View(carDetails);
-        }
-
-        // POST: CarDetails/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
-        {
-            var carDetails = await _context.CarDetails.FindAsync(id);
-            _context.CarDetails.Remove(carDetails);
-            await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
-        }
-
-        private bool CarDetailsExists(int id)
-        {
-            return _context.CarDetails.Any(e => e.Id == id);
         }
     }
 }
+       
+    
+
