@@ -25,6 +25,11 @@ namespace FreePark.Controllers
             return View(await _context.ParkingSpaces.ToListAsync());
         }
 
+        public async Task<IActionResult> Map()
+        {
+            return View(await _context.ParkingSpaces.ToListAsync());
+        }
+
         public IActionResult Search()
         {
             //var result = _context.ParkingSpaces.Where(p => p.StartTime >= 5).Where(p => p.IsGarageParking == false).ToList();
