@@ -17,4 +17,17 @@
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
     }).addTo(map);
+
+    $.ajax({
+        url: '/ParkingSpaces/GetStreets',
+        success: function (data) {
+            console.log(data)
+            $(data).each(function (index, item) {
+                var lat = item.lat;
+                var lng = item.lng;
+                L.marker([lat, lng]).bindPopup(item.streetName).addTo(map);
+            });
+        },
+    });
+
 </script>

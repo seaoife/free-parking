@@ -25,6 +25,12 @@ namespace FreePark.Controllers
             return View(await _context.ParkingSpaces.ToListAsync());
         }
 
+        public async Task<JsonResult> GetStreets()
+        {   
+            // fetching all parkings spaces and converting it to json
+            return Json(await _context.ParkingSpaces.ToListAsync());
+        }
+
         public async Task<IActionResult> Map()
         {
             return View(await _context.ParkingSpaces.ToListAsync());
