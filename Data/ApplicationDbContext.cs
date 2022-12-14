@@ -23,6 +23,14 @@ namespace FreePark.Data
         public DbSet<FreePark.Models.CarDetails> CarDetails { get; set; }
 
         public DbSet<FreePark.Models.ParkInputPage> ParkInputPage { get; set; }
+
+      
+
+       
+
+        
+
+        
          
     }
 }

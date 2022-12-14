@@ -37,6 +37,16 @@
                 <input asp-for="lng" class="form-control" />
                 <span asp-validation-for="lng" class="text-danger"></span>
             </div>
+            <div class="form-group">
+                <label asp-for="lat" class="control-label"></label>
+                <input asp-for="lat" class="form-control" />
+                <span asp-validation-for="PMLocation1lat" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="lng" class="control-label"></label>
+                <input asp-for="lng" class="form-control" />
+                <span asp-validation-for="PMLocation1lng" class="text-danger"></span>
+            </div>
             <div class="form-group form-check">
                 <label class="form-check-label">
                     <input class="form-check-input" asp-for="IsGarageParking" /> @Html.DisplayNameFor(model => model.IsGarageParking)

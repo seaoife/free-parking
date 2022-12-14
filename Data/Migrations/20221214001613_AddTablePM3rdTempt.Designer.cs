@@ -4,14 +4,16 @@ using FreePark.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace FreePark.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20221214001613_AddTablePM3rdTempt")]
+    partial class AddTablePM3rdTempt
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -82,6 +84,27 @@ namespace FreePark.Data.Migrations
                     b.ToTable("ParkInputPage");
                 });
 
+            modelBuilder.Entity("FreePark.Models.ParkingMeter", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<float>("PMLocation1lat")
+                        .HasColumnType("real");
+
+                    b.Property<float>("PMLocation1lng")
+                        .HasColumnType("real");
+
+                    b.Property<bool>("parkingMeter")
+                        .HasColumnType("bit");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("ParkingMeter");
+                });
+
             modelBuilder.Entity("FreePark.Models.ParkingSpace", b =>
                 {
                     b.Property<int>("Id")
@@ -106,12 +129,6 @@ namespace FreePark.Data.Migrations
 
                     b.Property<string>("Notes")
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<float>("PMLocation1lat")
-                        .HasColumnType("real");
-
-                    b.Property<float>("PMLocation1lng")
-                        .HasColumnType("real");
 
                     b.Property<int>("StartDay")
                         .HasColumnType("int");

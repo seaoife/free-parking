@@ -13,6 +13,8 @@ namespace FreePark.Models
         public string Venue { get; set; }
         public float lat { get; set; }
         public float lng { get; set; }
+        public float PMLocation1lat { get; set; }
+        public float PMLocation1lng { get; set; }
         public bool IsGarageParking { get; set; }
         public bool HasParkingMeterLocations { get; set; }
         public bool IsFreeParking { get; set; }
