@@ -12,6 +12,17 @@
 <h1>Map View</h1>
 
 <div id="map"></div>
+<div>
+    <a class="btn btn-primary btn-md" role="button" aria-disabled="true" asp-controller="GarageParkings" asp-action="Index">
+        Garage Parking
+    </a>
+    <a class="btn btn-primary btn-md" role="button" aria-disabled="true" asp-controller="ParkingSpaces" asp-action="Create">
+        Parking Meters
+    </a>
+    <a class="btn btn-primary btn-md" role="button" aria-disabled="true" asp-controller="ParkingSpaces" asp-action="Create">
+        Free Parking
+    </a>
+</div>
 <script>
     var map = L.map('map').setView([53.34164, -6.28417], 12);// the lat and long of the map and the 13 is the amount the mao will be zoomed in.
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
