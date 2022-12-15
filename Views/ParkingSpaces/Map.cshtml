@@ -13,12 +13,9 @@
 
 <div id="map"></div>
 <div>
-    <a class="btn btn-primary btn-md" role="button" aria-disabled="true" asp-controller="GarageParkings" asp-action="Index">
-        Garage Parking
-    </a>
-    <a class="btn btn-primary btn-md" role="button" aria-disabled="true" asp-controller="ParkingSpaces" asp-action="Create">
-        Parking Meters
-    </a>
+    <button class="btn btn-primary" onclick="getGarageParking()">Garage Parkings</button>
+    <button class="btn btn-primary" onclick="getParkingMeters()">Parking Meters</button>
+
     <a class="btn btn-primary btn-md" role="button" aria-disabled="true" asp-controller="ParkingSpaces" asp-action="Create">
         Free Parking
     </a>
@@ -40,5 +37,59 @@
             });
         },
     });
+
+    function getGarageParking() {
+        try {
+            var greenIcon = new L.Icon({
+                iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-green.png',
+                shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
+                iconSize: [25, 41],
+                iconAnchor: [12, 41],
+                popupAnchor: [1, -34],
+                shadowSize: [41, 41]
+            });
+
+            $.ajax({
+                url: '/ParkingSpaces/GetGarageParkings',
+                success: function (data) {
+                    console.log(data)
+                    $(data).each(function (index, item) {
+                        var lat = item.garageLat;
+                        var lng = item.garageLong;
+                        L.marker([lat, lng], { icon: greenIcon }).bindPopup(item.garageName).addTo(map);
+                    });
+                },
+            });
+        } catch (err) {
+            console.log(err)
+        }
+    }
+
+    function getParkingMeters() {
+        try {
+            var greenIcon = new L.Icon({
+                iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-red.png',
+                shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
+                iconSize: [25, 41],
+                iconAnchor: [12, 41],
+                popupAnchor: [1, -34],
+                shadowSize: [41, 41]
+            });
+
+            $.ajax({
+                url: '/ParkingSpaces/GetStreets',
+                success: function (data) {
+                    console.log(data)
+                    $(data).each(function (index, item) {
+                        var lat = item.pmLocation1lat;
+                        var lng = item.pmLocation1lng;
+                        L.marker([lat, lng], { icon: greenIcon }).bindPopup("Parking Meter: \n" + item.streetName).addTo(map);
+                    });
+                },
+            });
+        } catch (err) {
+            console.log(err)
+        }
+    }
 
 </script>
