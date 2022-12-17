@@ -26,7 +26,7 @@ namespace FreePark.Controllers
         }
 
         public async Task<JsonResult> GetStreets()
-        {   
+        {
             // fetching all parkings spaces and converting it to json.function for conver
             return Json(await _context.ParkingSpaces.ToListAsync());
         }
@@ -37,6 +37,17 @@ namespace FreePark.Controllers
             // fetching all parkings spaces and converting it to json
             return Json(await _context.GarageParking.ToListAsync());
         }
+
+        //https://localhost:44361/ParkingSpaces/SearchForMap?StreetName=westland
+        public async Task<JsonResult> SearchForMap(ParkInputPage parkInputPage)
+        {
+            var result = _context.ParkingSpaces
+                .Where(p => EF.Functions.Like(p.StreetName, "%" + parkInputPage.StreetName + "%"))
+                .ToList();
+
+            return Json(result);//then returns the Index view
+        }
+
 
         public async Task<IActionResult> Map()
         {
@@ -54,19 +65,22 @@ namespace FreePark.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Search([Bind("Id,UserId,LocationSelect,ParkNearVenueSelect,FreeParkingCheckBox,GarageParkingCheckbox,ParkingMeterLocations")] ParkInputPage parkInputPage)
+        public async Task<IActionResult> Search(ParkInputPage parkInputPage)
         {
             // will trigger this function when button in views/ParkingSpaces/Search is pressed
             // querying from parking spaces with given parameters: dayOfweek, GarageParkingCheckbox
-            var result = _context.ParkingSpaces
-                .Where(p => p.StartTime >= (int)parkInputPage.StartTime.Hour)
-                .Where(p => p.StartDay >= (int)parkInputPage.StartTime.DayOfWeek)
-                .Where(p => p.IsFreeParking == parkInputPage.FreeParkingCheckBox)
-                .Where(p => p.IsGarageParking == parkInputPage.GarageParkingCheckbox)
-                .Where(p => p.HasParkingMeterLocations == parkInputPage.ParkingMeterLocations)
-                .ToList();
+            //var result = _context.ParkingSpaces
+            //    .Where(p => p.StartTime >= (int)parkInputPage.StartTime.Hour)
+            //    .Where(p => p.StartDay >= (int)parkInputPage.StartTime.DayOfWeek)
+            //    // is boyne street name in db?
+            //    // adds query for streetname as sql like from form of search view https://www.w3schools.com/sql/sql_like.asp
+            //    .Where(p => EF.Functions.Like(p.StreetName, "%"+parkInputPage.StreetName+"%"))
+            //    .ToList();
 
-            return View("Index", result);//then returns the Index view
+            //return View("Index", result);//then returns the Index view
+            
+            // redirect to Map Function
+            return this.RedirectToAction("Map", new { StreetName = parkInputPage.StreetName });
         }
 
         // GET: ParkingSpaces/Details/5

@@ -26,8 +26,12 @@
         attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
     }).addTo(map);
 
+    var urlParams = new URLSearchParams(window.location.search);
+    var streetName = urlParams.get('StreetName')
+    console.log(streetName);
+
     $.ajax({
-        url: '/ParkingSpaces/GetStreets',
+        url: '/ParkingSpaces/SearchForMap?StreetName=' + streetName,
         success: function (data) {
             console.log(data)
             $(data).each(function (index, item) {
@@ -42,6 +46,11 @@
                     .setContent(msg);
                 L.marker([lat, lng]).bindPopup(popup).addTo(map);
             });
+
+            if (data.length >= 1) {
+                var item = data[0];
+                map.setView([item.lat, item.lng], 15)
+            }
         },
     });
 

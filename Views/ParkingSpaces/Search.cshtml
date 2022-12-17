@@ -58,14 +58,9 @@
 <h4 class="pageTitle">Enter Search Details</h4>
 <hr />
 <div class="centerBlock">
-    <div >
-        <form asp-action="Map">
-            @*<div asp-validation-summary="ModelOnly" class="text-danger"></div>
-        <div class="form-group">
-            <label asp-for="UserId" class="control-label"></label>
-            <input asp-for="UserId" class="form-control" />
-            <span asp-validation-for="UserId" class="text-danger"></span>
-        </div>*@
+    <div>
+        @*search is to ensure seach criteria is quered in the database*@
+        <form asp-action="Search">
             <div class="form-group">
                 <label asp-for="LocationSelect" class="control-label"></label>
                 <select id="cities" name="LocationSelect">
@@ -73,37 +68,14 @@
                     <option value="Cork">Cork</option>
                     <option value="Galway">Galway</option>
                 </select>
-                @*<input asp-for="LocationSelect" class="form-control" />*@
-                @*<span asp-validation-for="LocationSelect" class="text-danger"></span>*@
             </div>
             <label for="html">Enter Street Name</label><br>
             <div class="form-group form-check">
                 <label class="form-check-label">
-                    <input class="form-check-input" asp-for="StreetName" /> @Html.DisplayNameFor(model => model.StreetName)
+                    <input class="form-check-input" asp-for="StreetName" required/> @Html.DisplayNameFor(model => model.StreetName)
                 </label>
             </div>
-            @*<div class="form-group">
-            <label asp-for="ParkNearVenueSelect" class="control-label"></label>
-            <input asp-for="ParkNearVenueSelect" class="form-control" />
-            <span asp-validation-for="ParkNearVenueSelect" class="text-danger"></span>
-        </div>*@
-            @*<div class="form-group form-check">
-                <label class="form-check-label">
-                    <input class="form-check-input" asp-for="FreeParkingCheckBox" /> @Html.DisplayNameFor(model => model.FreeParkingCheckBox)
-                </label>
-            </div>
-            <div class="form-group form-check">
-                <label class="form-check-label">
-                    <input class="form-check-input" asp-for="GarageParkingCheckbox" /> @Html.DisplayNameFor(model => model.GarageParkingCheckbox)
-                </label>
-            </div>
-
-            <div class="form-group form-check">
-                <label class="form-check-label">
-                    <input class="form-check-input" asp-for="ParkingMeterLocations" /> @Html.DisplayNameFor(model => model.ParkingMeterLocations)
-                </label>
-            </div>*@
-            <label for="html">Enter Start Time</label><br>
+            @*<label for="html">Enter Start Time</label><br>
             <div class="form-group form-check">
                 <label class="form-check-label">
                     <input class="form-check-input" asp-for="StartTime" /> @Html.DisplayNameFor(model => model.StartTime)
@@ -114,7 +86,7 @@
                 <label class="form-check-label">
                     <input class="form-check-input" asp-for="EndTime" /> @Html.DisplayNameFor(model => model.EndTime)
                 </label>
-            </div>
+            </div>*@
             <br />
             <div class="col-center">
                 <input type="submit" value="Go to Map" class="btn btn-primary" />
