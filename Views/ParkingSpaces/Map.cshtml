@@ -33,7 +33,14 @@
             $(data).each(function (index, item) {
                 var lat = item.lat;
                 var lng = item.lng;
-                L.marker([lat, lng]).bindPopup(item.streetName).addTo(map);
+                var msg = item.streetName + "</br>"
+                    + "Total Spaces:" + item.totalSpace + "</br>"
+                    + "Start time:" + item.startTime + "</br>"
+                    + "End time:" + item.endTime + "</br>"
+                    + item.notes;
+                var popup = L.popup()
+                    .setContent(msg);
+                L.marker([lat, lng]).bindPopup(popup).addTo(map);
             });
         },
     });
