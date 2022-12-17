@@ -45,12 +45,27 @@
                 var popup = L.popup()
                     .setContent(msg);
                 L.marker([lat, lng]).bindPopup(popup).addTo(map);
+
+                var pointA = new L.LatLng(item.streetStartlat, item.streetStartlong);
+                var pointB = new L.LatLng(item.streetEndlat, item.streetEndlng);
+                var line = [pointA, pointB];
+
+                var firstpolyline = new L.polyline(line,{
+                    color: 'red',
+                    weight: 5,
+                    opacity: 0.5
+                });
+
+                firstpolyline.addTo(map);
             });
 
+            // to zoom in to that street
             if (data.length >= 1) {
                 var item = data[0];
                 map.setView([item.lat, item.lng], 15)
             }
+
+        
         },
     });
 
