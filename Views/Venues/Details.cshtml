@@ -1,0 +1,48 @@
+﻿@model FreePark.Models.Venue
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Venue</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.VenueName)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.VenueName)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.GarageLat)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.GarageLat)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.GarageLong)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.GarageLong)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.VenueImage)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.VenueImage)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.VenueNotes)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.VenueNotes)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.VenueId">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

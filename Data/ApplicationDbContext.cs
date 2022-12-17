@@ -26,6 +26,8 @@ namespace FreePark.Data
 
         public DbSet<FreePark.Models.GarageParking> GarageParking { get; set; }
 
+        public DbSet<FreePark.Models.Venue> Venue { get; set; }
+
       
 
        

@@ -4,14 +4,16 @@ using FreePark.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace FreePark.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20221217141951_2ndStreetLatLong")]
+    partial class _2ndStreetLatLong
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -188,33 +190,6 @@ namespace FreePark.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("UserPhone");
-                });
-
-            modelBuilder.Entity("FreePark.Models.Venue", b =>
-                {
-                    b.Property<int>("VenueId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<float>("GarageLat")
-                        .HasColumnType("real");
-
-                    b.Property<float>("GarageLong")
-                        .HasColumnType("real");
-
-                    b.Property<string>("VenueImage")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("VenueName")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("VenueNotes")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("VenueId");
-
-                    b.ToTable("Venue");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>

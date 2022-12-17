@@ -9,6 +9,10 @@ namespace FreePark.Models
     {
         public int Id { get; set; }
         public string StreetName { get; set; }
+        public float StreetStartlat { get; set; }
+        public float StreetStartlong { get; set; }
+        public float StreetEndlat { get; set; }
+        public float StreetEndlng { get; set; }
         public int TotalSpace { get; set; }
         public string Venue { get; set; }
         public float lat { get; set; }
