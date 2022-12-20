@@ -57,13 +57,13 @@
                 var currentHr = (new Date()).getHours();
                 var currentDay = (new Date()).getDay();
                 // checks if its in timeframe
-              
-                var res = (startTime <= currentHr && currentHr <= endTime) ||
-                    (startDay <= currentDay && currentDay <= endDay);
+               
+                var isFreeParking = (currentHr < startTime || endTime < currentHr) ||
+                    (currentDay < startDay || endDay < currentDay);
 
                 var firstpolyline = new L.polyline(line, {
                     // using ternary operator
-                    color: res ? 'green' : 'red',
+                    color: isFreeParking ? 'green' : 'red',
                     weight: 5,
                     opacity: 0.5
                 });
@@ -168,12 +168,12 @@
                         var currentDay = (new Date()).getDay();
                         // checks if its in timeframe
 
-                        var res = (startTime <= currentHr && currentHr <= endTime) ||
-                            (startDay <= currentDay && currentDay <= endDay);
+                        var isFreeParking = (currentHr < startTime || endTime < currentHr) ||
+                            (currentDay < startDay || endDay < currentDay);
 
                         var firstpolyline = new L.polyline(line, {
                             // using ternary operator
-                            color: res ? 'green' : 'red',
+                            color: isFreeParking ? 'green' : 'red',
                             weight: 5,
                             opacity: 0.5
                         });
