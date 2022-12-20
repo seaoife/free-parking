@@ -24,9 +24,11 @@ namespace FreePark.Models
         public bool IsFreeParking { get; set; }
         public int StartDay { get; set; }
         public int EndDay { get; set; }
-        public int StartTime { get; set; }
-        public int EndTime { get; set; }
-        public string Notes { get; set; }
+        public float StartTime { get; set; }
+        public float EndTime { get; set; }
+        public string Notes { get; set; }  
+        public float free_paidlat { get; set; }
+        public float free_paidlng { get; set; }
 
     }
 }

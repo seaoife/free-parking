@@ -13,17 +13,24 @@
             color: white !important;
         }
 
-       /* .navbar {
-            background-color: white !important;
-        }*/
+        .navbar {
+            background-color: #009933 !important;
+        }
 
         .nav-link {
             color: black !important;
         }
 
+        .background-image {
             
-        
-        .pageTitle {
+            z-index: -1;
+            position: fixed;
+            /*right: 0;
+            bottom: 0;
+            min-width: 100%;
+            min-height: 100%;*/
+        }
+            .pageTitle {
             background: none;
             display: flex;
             flex-direction: column;
@@ -40,40 +47,40 @@
 <h4 class="pageTitle">Choose Login Option</h4>
 <br/>
 <body>
-    <!--First section-->
-    <div style="background-image: url('images/drawingCar.jpg'); 
-       background-size:cover; height: 250px; padding-top: 80px;">
-    </div>
 
-    @*<img src="car.jpg" alt="Car sitting on Coins" width="500" height="600">*@
+    <div style="background-image: url('images/car.jpg');
+        background-size:cover; height: 250px; padding-top: 80px;">
 
-    <div>
+
         <div class="container">
-            <div class="row">
-                <div class="col-center">
-                    <a class="btn btn-primary btn-md" role="button" aria-disabled="true" asp-area="Identity" asp-page="/Account/Login">
-                        Login
-                    </a>
-                </div>
+
+        </div>
+
+        <div class="row">
+            <div class="col-center">
+                <a class="btn btn-primary btn-md" role="button" aria-disabled="true" asp-area="Identity" asp-page="/Account/Login">
+                    Login
+                </a>
             </div>
-            <br /><br />
-            <div class="row">
-                <div class="col-center">
-                    <a class="btn btn-primary btn-md" role="button" aria-disabled="true" asp-area="Identity" asp-page="/Account/Register">
-                        Register
-                    </a>
-                </div>
+        </div>
+        <br /><br />
+        <div class="row">
+            <div class="col-center">
+                <a class="btn btn-primary btn-md" role="button" aria-disabled="true" asp-area="Identity" asp-page="/Account/Register">
+                    Register
+                </a>
             </div>
-            <br /><br />
-            <div class="row">
-                <div class="col-center">
-                    <a class="btn btn-primary btn-md" role="button" aria-disabled="true" asp-controller="CarRegEntries" asp-action="Create">
-                        Use without account
-                    </a>
-                </div>
+        </div>
+        <br /><br />
+        <div class="row">
+            <div class="col-center">
+                <a class="btn btn-primary btn-md" role="button" aria-disabled="true" asp-controller="CarRegEntries" asp-action="Create">
+                    Use without account
+                </a>
             </div>
         </div>
     </div>
+
 
 </body>
 

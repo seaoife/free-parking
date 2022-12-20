@@ -72,21 +72,28 @@
             <label for="html">Enter Street Name</label><br>
             <div class="form-group form-check">
                 <label class="form-check-label">
-                    <input class="form-check-input" asp-for="StreetName" required/> @Html.DisplayNameFor(model => model.StreetName)
+                    <input class="form-check-input" asp-for="StreetName" required /> @Html.DisplayNameFor(model => model.StreetName)
                 </label>
-            </div>
-            @*<label for="html">Enter Start Time</label><br>
+                <p>or</p>
+            </div> 
+            @*<label for="html">Enter Venue Name</label><br>
             <div class="form-group form-check">
                 <label class="form-check-label">
-                    <input class="form-check-input" asp-for="StartTime" /> @Html.DisplayNameFor(model => model.StartTime)
-                </label>
-            </div>
-            <label for="html">Enter End Time</label><br>
-            <div class="form-group form-check">
-                <label class="form-check-label">
-                    <input class="form-check-input" asp-for="EndTime" /> @Html.DisplayNameFor(model => model.EndTime)
+                    <input class="form-check-input" asp-controller="Venues" asp-for="Venue" /> @Html.DisplayNameFor(model => model.VenueName)
                 </label>
             </div>*@
+            @*<label for="html">Enter Start Time</label><br>
+        <div class="form-group form-check">
+            <label class="form-check-label">
+                <input class="form-check-input" asp-for="StartTime" /> @Html.DisplayNameFor(model => model.StartTime)
+            </label>
+        </div>
+        <label for="html">Enter End Time</label><br>
+        <div class="form-group form-check">
+            <label class="form-check-label">
+                <input class="form-check-input" asp-for="EndTime" /> @Html.DisplayNameFor(model => model.EndTime)
+            </label>
+        </div>*@
             <br />
             <div class="col-center">
                 <input type="submit" value="Go to Map" class="btn btn-primary" />

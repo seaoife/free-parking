@@ -17,6 +17,7 @@
     <button class="btn btn-primary" onclick="getParkingMeters()">Parking Meters</button>
     <button class="btn btn-primary" onclick="getFreeParking()">Free Parking</button>
     <button class="btn btn-secondary" onclick="clearMap()">Clear Map</button>
+    
 </div>
 <script>
     var map = L.map('map').setView([53.34164, -6.28417], 12);// the lat and long of the map and the 13 is the amount the mao will be zoomed in.
@@ -73,7 +74,7 @@
             // to zoom in to that street
             if (data.length >= 1) {
                 var item = data[0];
-                map.setView([item.lat, item.lng], 15)
+                map.setView([item.lat, item.lng], 17)
             }
 
 
