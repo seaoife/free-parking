@@ -134,24 +134,12 @@
     }
     function getFreeParking() {
         try {
-            
-            var purpleIcon = new L.Icon({
-                iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-violet.png',
-                shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
-                iconSize: [25, 41],
-                iconAnchor: [12, 41],
-                popupAnchor: [1, -34],
-                shadowSize: [41, 41]
-            });
-
             $.ajax({
                 url: '/ParkingSpaces/GetStreets',
                 success: function (data) {
-                    console.log(data);
                     $(data).each(function (index, item) {
-                        var lat = item.pmLocation1lat;
-                        var lng = item.pmLocation1lng;
-                        L.marker([lat, lng], { icon: purpleIcon }).bindPopup("Parking Meter: \n" + item.streetName).addTo(map);
+                        var lat = item.free_paidlat;
+                        var lng = item.free_paidlng;
 
                         // for drawing line
                         var pointA = new L.LatLng(item.streetStartlat, item.streetStartlong);
@@ -178,6 +166,25 @@
                             opacity: 0.5
                         });
 
+                        // Creates a red marker with the coffee icon
+                        var customMarker = L.ExtraMarkers.icon({
+                            icon: 'fa-car',
+                            markerColor: isFreeParking ? 'green' : 'red',
+                            shape: 'square',
+                            prefix: 'fa'
+                        });
+
+                        var msg = item.streetName + "</br>"
+                            + "Total Spaces:" + item.totalSpace + "</br>"
+                            + "Start time:" + item.startTime + "</br>"
+                            + "End time:" + item.endTime + "</br>"
+                            + item.notes;
+                        var popup = L.popup()
+                            .setContent(msg);
+
+                        L.marker([lat, lng], { icon: customMarker })
+                            .bindPopup(popup)
+                            .addTo(map);
                         firstpolyline.addTo(map);
                     });
                 },
