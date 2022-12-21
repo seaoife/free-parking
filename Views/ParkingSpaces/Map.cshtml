@@ -8,19 +8,25 @@
         width: 100%;
         height: 500px;
     }
+    .btn btn-primary1 {
+        color: #00cc44;
+    }
 </style>
 <h1>Map View</h1>
 
 <div id="map"></div>
 <div>
-    <button class="btn btn-primary" onclick="getGarageParking()">Garage Parkings</button>
-    <button class="btn btn-primary" onclick="getParkingMeters()">Parking Meters</button>
-    <button class="btn btn-primary" onclick="getFreeParking()">Free Parking</button>
-    <button class="btn btn-secondary" onclick="clearMap()">Clear Map</button>
-    
+    <button class="btn btn-primary1" onclick="getGarageParking()">Garage Parkings</button>
+    <button class="btn btn-primary2" onclick="getParkingMeters()">Parking Meters</button>
+    <button class="btn btn-primary3" onclick="getFreeParking()">Free Parking</button>
+    <button class="btn btn-secondary4" onclick="clearMap()">Clear Map</button>
+   
+    <a class="btn btn-primary btn-md" role="button" aria-disabled="true" onclick="clearMap()" asp-controller="ParkingSpaces" asp-action="Search">
+        Back to Search
+    </a>
 </div>
 <script>
-    var map = L.map('map').setView([53.34164, -6.28417], 12);// the lat and long of the map and the 13 is the amount the mao will be zoomed in.
+    var map = L.map('map').setView([53.34164, -6.28417], 16);// the lat and long of the map and the 13 is the amount the mao will be zoomed in.
     var fg = L.featureGroup().addTo(map);
 
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
