@@ -7,16 +7,19 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using FreePark.Data;
 using FreePark.Models;
+using Microsoft.AspNetCore.Identity;
 
 namespace FreePark.Controllers
 {
     public class CarRegEntriesController : Controller
     {
         private readonly ApplicationDbContext _context;
+        private UserManager<IdentityUser> _userManager;// added user manager to have access to teh userId
 
-        public CarRegEntriesController(ApplicationDbContext context)
+        public CarRegEntriesController(ApplicationDbContext context, UserManager<IdentityUser> userManager)//added another parameter of user manager
         {
             _context = context;
+            _userManager = userManager;
         }
 
         // GET: CarRegEntries
@@ -58,7 +61,9 @@ namespace FreePark.Controllers
         {
             if (ModelState.IsValid)
             {
-                _context.Add(carRegEntry);
+                var user = await _userManager.GetUserAsync(User);
+                carRegEntry.UserId = user.Id;//"3d1a3723-c31a-450d-a28b-99e3e3c3fc99";
+                _context.Add(carRegEntry);//added carreg entry so that when a valid registration is made the carreg will save also
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }

@@ -62,20 +62,23 @@
 <hr />
 <div class="row">
     <div>
-        <form asp-action="Next">
+        <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="col-center">
                 @*<label asp-for="CarReg" class="control-label"></label>*@
-                <input asp-for="CarReg" class="form-control" maxlength="40"/>
+                <input asp-for="CarReg" class="form-control" maxlength="40" />
                 <span asp-validation-for="CarReg" class="text-danger"></span>
             </div>
-            
-            <br/>
-        <div class="pos-cent">
-            <a class="btn btn-primary btn-md" role="button" aria-disabled="true" asp-controller="CarDetails" asp-action="Index">
-                Next
-            </a>
-        </div>
+
+            <br />
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+            <div class="pos-cent">
+                <a class="btn btn-primary btn-md" role="button" aria-disabled="true" asp-controller="CarDetails" asp-action="Index">
+                    Next
+                </a>
+            </div>
         </form>
     </div> 
 </div>
