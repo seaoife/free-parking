@@ -48,7 +48,14 @@ namespace FreePark.Controllers
             return Json(result);//then returns the Index view
         }
 
+        //public async Task<JsonResult> SearchForVenue(ParkInputPage parkInputPage)
+        //{
+        //    var result = _context.ParkingSpaces
+        //        .Where(p => EF.Functions.Like(p.Venue, "%" + parkInputPage.Venue + "%"))
+        //        .ToList();
 
+        //    return Json(result);//then returns the Index view
+        //}
         public async Task<IActionResult> Map()
         {
             return View(await _context.ParkingSpaces.ToListAsync());

@@ -6,83 +6,56 @@
 
 
 <head>
+    <link href="@Url.Content("~/css/searchParkingSpaces.css")" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="searchParkingSpaces.css" />
     <style>
-        .centerBlock {
-           position: absolute;
-            right: 43.5%;
-        }
-        .pageTitle {
-            background: none;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            text-align: center;
-        }
-        .col-center {
-            width: 100%;
-            text-align: center;
-        }
-        .pos-bottom {
-            position: absolute;
-            top: 80%;
-            right: 49%;
-         }
-
-        a {
-            text-decoration: none;
-            display: inline-block;
-            padding: 8px 16px;
+        .navbar-brand {
+            color: white !important;
         }
 
-        
-            a:hover {
-                background-color: #ddd;
-                color: black;
-            }
-
-        .previous {
-            background-color: #f1f1f1;
-            color: black;
+        .navbar {
+            background-color: #009933 !important;
         }
 
-        .next {
-            background-color: #04AA6D;
-            color: white;
+        .nav-link {
+            color: black !important;
         }
 
-        .round {
-            border-radius: 50%;
-        }
     </style>
 </head>
-<h4 class="pageTitle">Enter Search Details</h4>
-<hr />
+<h4 class="pageTitle4">Enter Search Details</h4>
 <div class="centerBlock">
-    <div>
-        @*search is to ensure seach criteria is quered in the database*@
-        <form asp-action="Search">
-            <div class="form-group">
-                <label asp-for="LocationSelect" class="control-label"></label>
-                <select id="cities" name="LocationSelect">
-                    <option value="Dublin">Dublin</option>
-                    <option value="Cork">Cork</option>
-                    <option value="Galway">Galway</option>
-                </select>
-            </div>
-            <label for="html">Enter Street Name</label><br>
-            <div class="form-group form-check">
-                <label class="form-check-label">
-                    <input class="form-check-input" asp-for="StreetName" required /> @Html.DisplayNameFor(model => model.StreetName)
-                </label>
-                <p>or</p>
-            </div> 
-            @*<label for="html">Enter Venue Name</label><br>
-            <div class="form-group form-check">
-                <label class="form-check-label">
-                    <input class="form-check-input" asp-controller="Venues" asp-for="Venue" /> @Html.DisplayNameFor(model => model.VenueName)
-                </label>
-            </div>*@
-            @*<label for="html">Enter Start Time</label><br>
+    <div class="container">
+        <div class="box">
+            <div class="icon">1</div>
+            <div class="content">
+                <div>
+                    @*search is to ensure seach criteria is quered in the database*@
+                    <form asp-action="Search">
+                        <div class="form-group">
+                            <label asp-for="LocationSelect" class="control-label"></label>
+                            <select id="cities" name="LocationSelect">
+                                <option value="Dublin">Dublin</option>
+                                <option value="Cork">Cork</option>
+                                <option value="Galway">Galway</option>
+                            </select>
+                        </div>
+                        <label for="html">Enter Street Name</label><br>
+                        <div class="form-group form-check">
+                            <label class="form-check-label">
+                                <input class="form-check-input" asp-for="StreetName" required /> @Html.DisplayNameFor(model => model.StreetName)
+                            </label>
+                        </div>
+                        
+                        <p>or</p>
+                        
+                        <label for="html">Enter Venue Name</label><br>
+                        <div class="form-group form-check">
+                            <label class="form-check-label">
+                                @*<input class="form-check-input" asp-for="Venue" /> @Html.DisplayNameFor(model => model.Venue)*@
+                            </label>
+                        </div>
+                        @*<label for="html">Enter Start Time</label><br>
         <div class="form-group form-check">
             <label class="form-check-label">
                 <input class="form-check-input" asp-for="StartTime" /> @Html.DisplayNameFor(model => model.StartTime)
@@ -94,22 +67,21 @@
                 <input class="form-check-input" asp-for="EndTime" /> @Html.DisplayNameFor(model => model.EndTime)
             </label>
         </div>*@
-            <br />
-            <div class="col-center">
-                <input type="submit" value="Go to Map" class="btn btn-primary" />
+
+                        <div class="col-center">
+                            <input type="submit" value="Go to Map" class="btnbtn-primarybtn-md4" />
+                        </div>
+                       <br /><br /><br />
+                        <div class="pos-bottom">
+                            <a href="#" onClick="history.go(-1) " class="previous round">&#8249;</a>
+                        </div>
+                    </form>
+                </div>
+                
             </div>
-        </form>
+        </div>
     </div>
 </div>
-
-<br />
-
-<div class="pos-bottom">
-  
-    <a href="#" onClick="history.go(-1) "class="previous round">&#8249;</a>
-    
-</div>
-
-@section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-}
+            @section Scripts {
+                @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+            }

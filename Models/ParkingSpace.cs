@@ -15,6 +15,8 @@ namespace FreePark.Models
         public float StreetEndlng { get; set; }
         public int TotalSpace { get; set; }
         public string Venue { get; set; }
+        public float Venlat { get; set; }
+        public float Venlng { get; set; }
         public float lat { get; set; }
         public float lng { get; set; }
         public float PMLocation1lat { get; set; }
@@ -29,6 +31,8 @@ namespace FreePark.Models
         public string Notes { get; set; }  
         public float free_paidlat { get; set; }
         public float free_paidlng { get; set; }
+        public float zoneTarrif { get; set; }
+        public string clearWayTime { get; set; }
 
     }
 }
