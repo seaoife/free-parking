@@ -7,6 +7,12 @@
 <head>
     <link href="@Url.Content("wwwroot/css/common")" rel="stylesheet" type="text/css" />
     <link href="@Url.Content("~/css/CarRegEntries.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/css/loadCircle.css")" rel="stylesheet" type="text/css" />
+    @*<link href="@Url.Content("~/js/spinner.js")" rel="stylesheet" type="text/css" />*@
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.1/dist/jquery.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
     <link rel="stylesheet" type="text/css" href="~/css/CarRegEntries.css" />
     <style>
 
@@ -19,26 +25,26 @@
         }
 
         /*.pos-cent {
-            position: absolute;
-            right: 38%;
-        }
-*/
-       /* .col-center {
-            width: 100%;
-            text-align: center;
-        }*/
+                    position: absolute;
+                    right: 38%;
+                }
+        */
+        /* .col-center {
+                    width: 100%;
+                    text-align: center;
+                }*/
 
-       /* form {
-            position: absolute;
-            right: 43.5%;
-        }
+        /* form {
+                    position: absolute;
+                    right: 43.5%;
+                }
 
-        .cent-ahref {
-            position: absolute;
-            right: 49%;
-        }
-*/
-       
+                .cent-ahref {
+                    position: absolute;
+                    right: 49%;
+                }
+        */
+
     </style>
 </head>
 
@@ -46,7 +52,7 @@
     <div class="centerBlock">
         <div class="container">
             <div class="box">
-                <div class="icon">1</div>
+                <div class="icon"><i class='fas fa-car-side'></i></div>
                 <div class="content">
                     <div class="row">
                         <form asp-action="Create">
@@ -56,7 +62,7 @@
                                 <input asp-for="CarReg" class="form-control" maxlength="40" />
                                 <span asp-validation-for="CarReg" class="text-danger"></span>
                             </div>
-                             <br /><br />                
+                            <br /><br />
                             <div class="pos-cent">
                                 <a class="btnbtn-primarybtn-md5" role="button" aria-disabled="true" asp-controller="CarDetails" asp-action="Index">
                                     Next
@@ -66,6 +72,19 @@
                             <div class="cent-ahref">
                                 <a href="#" onClick="history.go(-1) " class="previous round">&#8249;</a>
                             </div>
+                            <div class="container">
+                                <div id="loading"></div>
+                                @*<div class="spinner-border text-muted"></div>
+        <div class="spinner-border text-primary"></div>*@
+                                <div class="spinner-border text-success"></div>
+                                @*<div class="spinner-border text-info"></div>
+        <div class="spinner-border text-warning"></div>
+        <div class="spinner-border text-danger"></div>
+        <div class="spinner-border text-secondary"></div>
+        <div class="spinner-border text-dark"></div>*@
+                                @*<div class="spinner-border text-light"></div>*@
+                            </div>
+                            @*<br /><br /> <div class="loader"></div>*@
                         </form>
                     </div>
                 </div>
@@ -75,4 +94,5 @@
 
             @section Scripts {
                 @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-            }
+               
+}
