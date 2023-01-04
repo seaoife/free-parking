@@ -14,6 +14,7 @@ namespace FreePark.Models
         public DateTime StartTime { get; set; }
         public DateTime EndTime { get; set; }
         public string StreetName { get; set; }
+        public string Venue { get; set; }
         public string LocationSelect { get; set; }
 
 
