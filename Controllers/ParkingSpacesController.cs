@@ -38,11 +38,12 @@ namespace FreePark.Controllers
             return Json(await _context.GarageParking.ToListAsync());
         }
 
-        //https://localhost:44361/ParkingSpaces/SearchForMap?StreetName=westland
+        //https://localhost:44361/ParkingSpaces/SearchForMap?StreetName=gra&Venue=stripe
         public async Task<JsonResult> SearchForMap(ParkInputPage parkInputPage)
         {
             var result = _context.ParkingSpaces
                 .Where(p => EF.Functions.Like(p.StreetName, "%" + parkInputPage.StreetName + "%"))
+                .Where(p => EF.Functions.Like(p.Venue, "%" + parkInputPage.Venue + "%"))
                 .ToList();
 
             return Json(result);//then returns the Index view
@@ -87,7 +88,7 @@ namespace FreePark.Controllers
             //return View("Index", result);//then returns the Index view
             
             // redirect to Map Function
-            return this.RedirectToAction("Map", new { StreetName = parkInputPage.StreetName });
+            return this.RedirectToAction("Map", new { StreetName = parkInputPage.StreetName, Venue = parkInputPage.Venue });
         }
 
         // GET: ParkingSpaces/Details/5

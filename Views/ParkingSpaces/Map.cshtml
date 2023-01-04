@@ -106,9 +106,10 @@
 
     var urlParams = new URLSearchParams(window.location.search);
     var streetName = urlParams.get('StreetName')
+    var venue = urlParams.get('Venue')
 
     $.ajax({
-        url: '/ParkingSpaces/SearchForMap?StreetName=' + streetName,
+        url: '/ParkingSpaces/SearchForMap?StreetName=' + streetName + '&Venue='+ venue,
         success: function (data) {
             $(data).each(function (index, item) {
                 var lat = item.lat;
