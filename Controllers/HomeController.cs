@@ -1,4 +1,5 @@
 ﻿using FreePark.Models;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
@@ -12,15 +13,24 @@ namespace FreePark.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+        private readonly SignInManager<IdentityUser> _signInManager;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(SignInManager<IdentityUser> signInManager,ILogger<HomeController> logger)
         {
             _logger = logger;
+            _signInManager = signInManager;
         }
 
         public IActionResult Index()
         {
-            return View();
+            if (_signInManager.IsSignedIn(User))
+            {
+                return this.RedirectToAction("Search", "ParkingSpaces");
+            }
+            else
+            {
+                return View();
+            }
         }
 
         public IActionResult Privacy()
