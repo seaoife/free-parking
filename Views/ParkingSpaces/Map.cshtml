@@ -108,8 +108,18 @@
     var streetName = urlParams.get('StreetName')
     var venue = urlParams.get('Venue')
 
+    var apiUrl = '/ParkingSpaces/SearchForMap?';
+
+    if (streetName) {
+        apiUrl += 'StreetName=' + streetName
+    }
+
+    if (venue) {
+        apiUrl += '&Venue=' + venue
+    }
+
     $.ajax({
-        url: '/ParkingSpaces/SearchForMap?StreetName=' + streetName + '&Venue='+ venue,
+        url: apiUrl,
         success: function (data) {
             $(data).each(function (index, item) {
                 var lat = item.lat;
