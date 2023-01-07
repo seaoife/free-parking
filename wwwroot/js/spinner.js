@@ -1,8 +1,11 @@
-﻿window.addEventListener("load", () => {
-    const loader = document.querySelector(".loader");
-    loader.classList.add("loader-hidden");
-    loader.addEventListener("transitionend", () => {
-        document.body.removeChild("loader");
+﻿const theButton = document.querySelector(".button");
 
-    })
-                })
+theButton.addEventListener("click", () => {
+    theButton.classList.add("button--loading");
+});
+
+
+
+
+
+

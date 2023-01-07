@@ -19,6 +19,10 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet-extra-markers/1.2.1/css/leaflet.extra-markers.min.css" integrity="sha512-wurszDyO1nj6ESdfrXb9h1hmoHMu3sQ3iXgKcu/p81lT+KaPGkta9NIPX7k6XXGgVYpcRHcc8AA4UIeQ7Ax/Cw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-extra-markers/1.2.1/js/leaflet.extra-markers.min.js" integrity="sha512-ejMFZwlfxDqEaSHHcCJ9EhzzDyp3QB5NjmGfOp1iwUQ7pFam2pX3EKERWvWK8H5HLQG6ETrx3RvrEFMQ4kIQ/Q==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    <link href="@Url.Content("~/css/bubbleMenu.css")" rel="stylesheet" type="text/css" />
+<style></style>
+
 </head>
 <body>
     <header id="colorHeader">
@@ -30,19 +34,52 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
-                    @*<partial name="_LoginPartial" />*@
+                    <partial name="_LoginPartial" />
                     <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
+                        @*<li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="ParkingSpaces" asp-action="Index">List All Parking Spaces</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="ParkingSpaces" asp-action="Search">Search</a>
-                        </li>
-                        
+                        </li>*@
                     </ul>
+                    <div class="menu">
+                        <input type="checkbox" href="#" class="menu-open" name="menu-open" id="menu-open" />
+                        <label class="menu-open-button" for="menu-open">
+                            <span class="hamburger hamburger-1"></span>
+                            <span class="hamburger hamburger-2"></span>
+                            <span class="hamburger hamburger-3"></span>
+                        </label>
+
+                        <a @*href="#"*@ class="menu-item" asp-area="" asp-controller="Home" asp-action="Index"><i class="fa fa-home"></i></a>
+                        <a href="#" class="menu-item"> <i class="fa fa-user"></i> </a>
+                        <a href="#" class="menu-item"> <i class="fa fa-envelope"></i> </a>
+                    </div>
+                    <svg xmlns="http://www.w3.org/2000/svg" version="1.1">
+                        <defs>
+                            <filter id="shadowed-goo">
+
+                                <feGaussianBlur in="SourceGraphic" result="blur" stdDeviation="10" />
+                                <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 18 -7" result="goo" />
+                                <feGaussianBlur in="goo" stdDeviation="3" result="shadow" />
+                                <feColorMatrix in="shadow" mode="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 1 -0.2" result="shadow" />
+                                <feOffset in="shadow" dx="1" dy="1" result="shadow" />
+                                <feBlend in2="shadow" in="goo" result="goo" />
+                                <feBlend in2="goo" in="SourceGraphic" result="mix" />
+                            </filter>
+                            <filter id="goo">
+                                <feGaussianBlur in="SourceGraphic" result="blur" stdDeviation="10" />
+                                <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 18 -7" result="goo" />
+                                <feBlend in2="goo" in="SourceGraphic" result="mix" />
+                            </filter>
+                        </defs>
+                    </svg>
+
+                    @*<li class="nav-item">
+            <a class="nav-link text-dark" asp-area="" asp-controller="ParkingSpaces" asp-action="Index">List All Parking Spaces</a>
+        </li>*@
+        @*<li class="nav-item">*@
+            @*<a class="nav-link text-dark" asp-area="" asp-controller="ParkingSpaces" asp-action="Search">Search</a>*@
+        @*</li>*@
+
+
                 </div>
             </div>
         </nav>
@@ -54,9 +91,9 @@
     </div>
 
     <footer class="border-top footer text-muted">
-        <div class="container">
+        @*<div class="container">
             &copy; 2022 - easyPark - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-        </div>
+        </div>*@
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>

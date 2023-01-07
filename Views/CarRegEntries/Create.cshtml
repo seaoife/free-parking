@@ -5,14 +5,10 @@
     ViewData["Title"] = "Create";
 }
 <head>
-    <link href="@Url.Content("wwwroot/css/common")" rel="stylesheet" type="text/css" />
+    <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
     <link href="@Url.Content("~/css/CarRegEntries.css")" rel="stylesheet" type="text/css" />
-    <link href="@Url.Content("~/css/loadCircle.css")" rel="stylesheet" type="text/css" />
-    @*<link href="@Url.Content("~/js/spinner.js")" rel="stylesheet" type="text/css" />*@
+    <script> src="@Url.Content("~/js/spinner.js")" language="javascript" type="text/javascript"</script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.1/dist/jquery.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
     <link rel="stylesheet" type="text/css" href="~/css/CarRegEntries.css" />
     <style>
 
@@ -23,76 +19,50 @@
             justify-content: center;
             text-align: center;
         }
-
-        /*.pos-cent {
-                    position: absolute;
-                    right: 38%;
-                }
-        */
-        /* .col-center {
-                    width: 100%;
-                    text-align: center;
-                }*/
-
-        /* form {
-                    position: absolute;
-                    right: 43.5%;
-                }
-
-                .cent-ahref {
-                    position: absolute;
-                    right: 49%;
-                }
-        */
-
     </style>
 </head>
 
-    <h4 class="pageTitle5">Enter Car Registration</h4>
-    <div class="centerBlock">
-        <div class="container">
-            <div class="box">
-                <div class="icon"><i class='fas fa-car-side'></i></div>
-                <div class="content">
-                    <div class="row">
-                        <form asp-action="Create">
-                            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                            <div class="col-center">
-                                <label asp-for="CarReg" class="control-label"></label>
-                                <input asp-for="CarReg" class="form-control" maxlength="40" />
-                                <span asp-validation-for="CarReg" class="text-danger"></span>
-                            </div>
-                            <br /><br />
-                            <div class="pos-cent">
-                                <a class="btnbtn-primarybtn-md5" role="button" aria-disabled="true" asp-controller="CarDetails" asp-action="Index">
-                                    Next
-                                </a>
-                            </div>
-                            <br /><br />
-                            <div class="cent-ahref">
-                                <a href="#" onClick="history.go(-1) " class="previous round">&#8249;</a>
-                            </div>
-                            <div class="container">
-                                <div id="loading"></div>
-                                @*<div class="spinner-border text-muted"></div>
-        <div class="spinner-border text-primary"></div>*@
-                                <div class="spinner-border text-success"></div>
-                                @*<div class="spinner-border text-info"></div>
-        <div class="spinner-border text-warning"></div>
-        <div class="spinner-border text-danger"></div>
-        <div class="spinner-border text-secondary"></div>
-        <div class="spinner-border text-dark"></div>*@
-                                @*<div class="spinner-border text-light"></div>*@
-                            </div>
-                            @*<br /><br /> <div class="loader"></div>*@
-                        </form>
-                    </div>
+<h4 class="pageTitle5">Enter Car Registration</h4>
+<div class="centerBlock">
+    <div class="container">
+        <div class="box">
+            <div class="icon"><i class='fas fa-car-side'></i></div>
+            <div class="content">
+                <div class="row">
+                    <form asp-action="Create">
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                        <div class="col-center">
+                            <label asp-for="CarReg" class="control-label"></label>
+                            <input asp-for="CarReg" class="form-control" maxlength="40" />
+                            <span asp-validation-for="CarReg" class="text-danger"></span>
+                        </div>
+                        <br /><br />
+                        <div class="pos-cent">
+                            <a class="btnbtn-primarybtn-md5" role="button" onclick="this.classList.toggle('button--loading')" aria-disabled="true" asp-controller="CarDetails" asp-action="Index">
+                                <span class="button_text">Next</span>
+                            </a>
+                        </div>
+                        <br /><br />
+                        <div class="cent-ahref">
+                            <a href="#" onClick="history.go(-1) " class="previous round">&#8249;</a>
+                        </div>
+
+
+                    </form>
                 </div>
             </div>
         </div>
-    </div>    
+    </div>
+</div>
 
-            @section Scripts {
-                @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-               
-}
+@section Scripts {
+    <script>
+        const theButton = document.querySelector(".btnbtn-primarybtn-md5");
+
+        theButton.addEventListener("click", () => {
+            theButton.classList.add("button--loading");
+
+    </script>
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+
+    }
