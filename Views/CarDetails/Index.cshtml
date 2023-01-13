@@ -5,15 +5,22 @@
 }
 <head>
     <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
-    <link href="@Url.Content("~/css/carDetailsCss.css")" rel="stylesheet" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="carDetailsCss.css" />
+    <link href="@Url.Content("~/css/carDetailsCss.css?v=4")" rel="stylesheet" type="text/css" />
+    @*<link rel="stylesheet" type="text/css" href="carDetailsCss.css" />*@
     <style>
+        .form-group6 {
+            padding-left: 27%;
+        }
+        .form-group7 {
+            padding-left: 29.5%;
+        }
+
     </style>
 </head>
-<h4 class="pageTitle5">Car Details</h4>
-<div class="container">
 
+<div class="container">
     <div class="box">
+        <h4 class="pageTitle5">Car Details</h4>
         <div class="icon"><i class='fas fa-car-side'></i></div>
         <div class="content">
             <table cellpadding="0" cellspacing="0">
@@ -30,25 +37,27 @@
                 }
 
             </table>
-
+            <br /><br />
             <div class="rowPosButton">
-                <div class="col-md-4">
-                    <form asp-action="Create">
-                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                        <div class="form-group">
-                            @*<input type="submit" value="Next" class="btnbtn-primarybtn-md6" />*@
-                            <a class="btnbtn-primarybtn-md6" role="button" aria-disabled="true" asp-controller="ParkingSpaces" asp-action="Search">
-                                Next
-                            </a>
-                        </div>
-                        <div>
-                            <a href="#" onClick="history.go(-1)" id="posBackButton"class="previous round">&#8249;</a>
-                        </div>
-                    </form>
-                </div>
+                @*<div class="row">*@
+                <form asp-action="Create">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="form-group6">
+                        @*<input type="submit" value="Next" class="btnbtn-primarybtn-md6" />*@
+                        <a class="btnbtn-primarybtn-md6" role="button" aria-disabled="true" asp-controller="ParkingSpaces" asp-action="Search">
+                            Next
+                        </a>
+                        <br /><br />
+                    </div>
+                    <div class="form-group7" id="posBackButton">
+                        <a href="#" onClick="history.go(-1)" class="previous round">&#8249;</a>
+                    </div>
+                </form>
             </div>
+            @*</div>*@
+
         </div>
-     </div>
+    </div>
 </div>
 
 

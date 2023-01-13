@@ -4,24 +4,41 @@
     ViewData["Title"] = "Manage Car Reg";
     ViewData["ActivePage"] = ManageNavPages.CarReg;
 }
+<head>
+    <link href="@Url.Content("~/css/manageLoginCarReg.css")" rel="stylesheet" type="text/css" />
 
-<h4>@ViewData["Title"]</h4>
+    <style>
+        .form-check-input8 {
+            margin-top: 0.3rem;
+            margin-right: 1.25rem;
+        }
+        .pageTitle8 {
+            font-size: 20px;
+            text-align:center;
+        }
+    </style>
+</head>
+
 <div class="centerBlock">
     <div class="container">
         <div class="box">
+
             <div class="icon"><i class='fas fa-car-side'></i></div>
+            <h4 class="pageTitle8">Manage Car Reg</h4>
+            <br />
             <div class="content">
                 <div class="row">
                     <form asp-controller="CarRegEntries" asp-action="Create">
                         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                         <div class="col-center">
                             <label asp-for="CarReg" class="control-label"></label>
-                            <input asp-for="CarReg" class="form-control" maxlength="40" />
+                            <input asp-for="CarReg" class="form-check-input8" maxlength="40" />
                             <span asp-validation-for="CarReg" class="text-danger"></span>
                         </div>
-                        <div class="form-group">
-                            <input type="submit" value="Create" class="btn btn-primary" />
-                        </div>                     
+                        <br />
+                        <div class="form-group8">
+                            <input type="submit" value="Create" class="btnbtn-primarybtn-md8" />
+                        </div>
                     </form>
                 </div>
             </div>

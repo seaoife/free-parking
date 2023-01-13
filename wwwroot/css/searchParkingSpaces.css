@@ -1,12 +1,10 @@
 ﻿
 .pageTitle4 {
-   /* position:center;
-    text-align: center;*/
-    font-size: 30px;
-    right:70%;
+    text-align: center;
+    font-size: 20px;
+    
     
 }
-
 
 .container {
     
@@ -166,5 +164,5 @@ a {
 .pos-bottom {
     position: absolute;
     top: 80%;
-    right: 32%;
+    right: 30.5%;
 }

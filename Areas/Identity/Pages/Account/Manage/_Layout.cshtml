@@ -8,22 +8,49 @@
         Layout = "/Areas/Identity/Pages/_Layout.cshtml";
     }
 }
+@*<head>
+    <link href="@Url.Content("~/css/manageLoginPassword.css")" rel="stylesheet" type="text/css" />
 
-<h2>Manage your account</h2>
+    <style>
+        .form-check-input8 {
+            margin-top: 0.3rem;
+            margin-right: 1.25rem;
+        }
 
-<div>
-    <h4>Change your account settings</h4>
-    <hr />
-    <div class="row">
-        <div class="col-md-3">
-            <partial name="_ManageNav" />
-        </div>
-        <div class="col-md-9">
-            @RenderBody()
+        .pageTitle8 {
+            font-size: 20px;
+            text-align: center;
+        }
+    </style>
+</head>*@
+
+@*<div class="centerBlock">
+    <div class="container">
+        <div class="box">
+
+            <div class="icon"><i class='fas fa-car-side'></i></div>
+            <h4 class="pageTitle8">Manage Account</h4>
+            <br />
+            <div class="content">*@
+               
+
+                <div>
+                    <h4>Change your account settings</h4>
+                    <hr />
+                    <div class="row">
+                        <div class="col-md-3">
+                            <partial name="_ManageNav" />
+                        </div>
+                        <div class="col-md-9">
+                            @RenderBody()
+                        </div>
+                    </div>
+                </div>
+            @*</div>
         </div>
     </div>
-</div>
+    </div>*@
 
-@section Scripts {
-    @RenderSection("Scripts", required: false)
-}
+    @section Scripts {
+        @RenderSection("Scripts", required: false)
+    }
