@@ -7,7 +7,13 @@
 <head>
     <link rel="icon" type="image/x-icon" href="@Url.Content("~/images/favicon.ico")">
     <link href="@Url.Content("~/css/manageLoginEmail.css")" rel="stylesheet" type="text/css" />
-    
+    <style>
+        .input-group1 {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+    </style>
 </head>
 <div class="container">
     <div class="box">
@@ -23,9 +29,9 @@
                             <label asp-for="Email"></label>
                             @if (Model.IsEmailConfirmed)
                             {
-                                <div class="input-group">
+                                <div class="input-group1">
                                     <input asp-for="Email" class="form-check-input9" />
-                                    <div class="input-group-append"><span class="input-group-text text-success font-weight-bold">✓</span>
+                                    <div class="@*input-group-append*@"><span class="input-group-text text-success font-weight-bold">✓</span>
                                     </div>
                                 </div>
                             }
