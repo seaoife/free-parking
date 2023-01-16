@@ -8,10 +8,30 @@
     <link rel="icon" type="image/x-icon" href="@Url.Content("~/images/favicon.ico")">
     <link href="@Url.Content("~/css/manageLoginEmail.css")" rel="stylesheet" type="text/css" />
     <style>
-        .input-group1 {
-            display: block;
+        .input-group9 {
+            margin-top: 0.3rem;
+            margin-right: 1.25rem;
+            /*display: block;
             margin-left: auto;
-            margin-right: auto;
+            margin-right: auto;*/
+        }
+
+            
+        
+          .navbar-brand {
+            color: white !important;
+        }
+
+        .navbar {
+            background-color: #009933 !important;
+        }
+
+        .nav-link {
+            color: black !important;
+        }
+        .form-check-input{
+            /*margin-top:0.3rem;*/
+           /* margin-right:1.25rem auto;*/
         }
     </style>
 </head>
@@ -21,19 +41,19 @@
         <div class="content">
             <h4>Manage Email</h4>
             <partial name="_StatusMessage" model="Model.StatusMessage" />
-            <div class="row">
-                <div class="col-md-6">
+            <div >
+                <div >
                     <form id="email-form" method="post">
                         <div asp-validation-summary="All" class="text-danger"></div>
                         <div class="form-group">
                             <label asp-for="Email"></label>
                             @if (Model.IsEmailConfirmed)
                             {
-                                <div class="input-group1">
+                                
                                     <input asp-for="Email" class="form-check-input9" />
                                     <div class="@*input-group-append*@"><span class="input-group-text text-success font-weight-bold">✓</span>
                                     </div>
-                                </div>
+                              
                             }
                             else
                             {

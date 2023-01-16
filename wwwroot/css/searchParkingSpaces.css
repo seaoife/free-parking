@@ -9,7 +9,6 @@
 .container {
     
     position: center;
-    padding: 0px 0px 0px 180px;
     justify-content: space-between;
     flex-wrap: wrap;
     z-index: 10;
@@ -104,8 +103,8 @@
 
     .container .box .content {
         text-align: center;
-        padding-left: 35px;
-        padding: 10px;
+        /*padding-left: 35px;
+        padding: 10px;*/
     }
 
     
@@ -164,5 +163,5 @@ a {
 .pos-bottom {
     position: absolute;
     top: 80%;
-    right: 30.5%;
+    right: 35%;
 }
