@@ -151,6 +151,11 @@
                 var isFreeParking = (currentHr < startTime || endTime < currentHr) ||
                     (currentDay < startDay || endDay < currentDay);
 
+                if (startTime === 0 & endTime === 0) {
+                    isFreeParking = false;
+
+                }
+
                 var firstpolyline = new L.polyline(line, {
                     // using ternary operator
                     color: isFreeParking ? 'green' : 'red',
@@ -250,6 +255,11 @@
                         var isFreeParking = (currentHr < startTime || endTime < currentHr) ||
                             (currentDay < startDay || endDay < currentDay);
 
+                        
+                        if (startTime === 0 & endTime === 0) {
+                            isFreeParking = false;
+                            
+                        }
                         var firstpolyline = new L.polyline(line, {
                             // using ternary operator
                             color: isFreeParking ? 'green' : 'red',
